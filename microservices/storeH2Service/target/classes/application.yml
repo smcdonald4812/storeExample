@@ -1,0 +1,23 @@
+spring: 
+  application: 
+    name: store-react-service 
+server: 
+  port: 9081
+info:
+  description: H2 RDBS microservice app
+  name: Store H2 RDBS Service Discoverable
+
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka} 
+  instance: 
+    hostname: localhost 
+    preferIpAddress: true
+    status-page-url-path: http://${eureka.instance.hostname}:${server.port}/statusHtwo
+    health-check-url: http://${eureka.instance.hostname}:${server.port}/healthHtwo
+    home-page-url: http://${eureka.instance.hostname}:${server.port}/storageHtwo
+  healthcheck:
+    enabled: true
+  register-with-eureka: true
+  fetch-registry: false
