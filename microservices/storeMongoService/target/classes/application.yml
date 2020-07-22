@@ -1,0 +1,23 @@
+spring: 
+  application: 
+    name: store-react-service 
+server: 
+  port: 9082
+info:
+  description: mongoDB reactive microservice app
+  name: Store mongoDB Service Discoverable
+
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka} 
+  instance: 
+    hostname: localhost 
+    preferIpAddress: true
+    status-page-url-path: http://${eureka.instance.hostname}:${server.port}/statusMongo
+    health-check-url: http://${eureka.instance.hostname}:${server.port}/healthMongo
+    home-page-url: http://${eureka.instance.hostname}:${server.port}/storageMongo
+  healthcheck:
+    enabled: true
+  register-with-eureka: true
+  fetch-registry: false
