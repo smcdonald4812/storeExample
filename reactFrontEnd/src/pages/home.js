@@ -2,24 +2,23 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import itemComponent from '../otherComponents/itemComponent';
 
 class Home extends React.Component {
 
     //going to use pagination to load in 12 item chunks
     loadChoices() {
+        const lists = itemComponent.itemList(); 
                 var rows = [], columns = [];
-                for (let index = 1; index < 12; index++) {
+                for (let i = 0; i < lists.length; i++) {
                     columns.push(
-                        <td key={index}>
+                        <td key={i.id}>
                                 <Card style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src="holder.js/100px180" />
+                                    <Card.Img variant="top" src={i.imgURL} />
                                     <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
-                                    <Button variant="primary" as={Link} to="/item" key={index}>Check it out</Button>
+                                        <Card.Title>{i.title}</Card.Title>
+                                    <Card.Text>{i.description}</Card.Text>
+                                    <Button variant="primary" as={Link} to="/item" key={i.id}>Shop</Button>
                                     </Card.Body>
                                 </Card>
                             </td>
