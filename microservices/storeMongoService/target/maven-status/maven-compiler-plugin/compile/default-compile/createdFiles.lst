@@ -1,0 +1,5 @@
+com\mcdonald\StoreNosqlServiceApplication.class
+com\mcdonald\controller\MongoListener.class
+com\mcdonald\model\Item.class
+com\mcdonald\repository\ItemStoreRepository.class
+com\mcdonald\services\ItemService.class

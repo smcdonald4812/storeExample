@@ -1,47 +1,54 @@
 package com.mcdonald.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 
-@Entity
-public class Item {
-	@GeneratedValue
+public class Item implements Serializable{
+	private static final long serialVersionUID = -5609891497513783329L;
 	@Id
-	private int id;
-	@NotBlank
-	@NotNull
+	private String id;
 	private float price;
-	@NotBlank
-	@NotNull
-	@Size(min=10,max=50,message="Title must be between 10 and 50 characters!")
 	private String title;
-	@NotBlank
-	@NotNull
-	@Size(min=3,max=40,message="Type must be between 3 and 40 characters!")
 	private String type;
-	@NotBlank
-	@NotNull
-	@Size(min=50,max=500,message="Description must be between 50 and 500 characters!")
 	private String description;
-	@NotBlank
-	@NotNull
-	@Size(max=500,message="Image url is more than 500 characters!")
 	private String imgURL;
-	public Item(String title, String description, float price, String type, String imgURL) {
+	private String altText;
+	public Item(String title, String description, float price, String type, String imgURL, String altText) {
 		this.title = title;
 		this.description = description;
 		this.price = price;
 		this.type = type;
 		this.imgURL = imgURL;
+		this.altText = altText;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public String getId() {
+		return id;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public String getType() {
+		return type;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public String getImgURL() {
+		return imgURL;
 	}
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", price=" + price + ", title=" + title + ", type=" + type + ", description="
 				+ description + ", imgURL=" + imgURL + "]";
+	}
+	public String getAltText() {
+		return altText;
 	}
 }
