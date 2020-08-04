@@ -3,19 +3,64 @@
   "name": "Create React App Sample",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
+      "src": "imgs/ballons.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "imgs/cellphone.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/chocolate.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/eyeLiner.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/laptop.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/lipstick.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/plates.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/ram.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/shoes.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/someBook.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/spoons.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/tshirt.png",
+      "type": "image/png",
+      "sizes": "192x192"
     }
   ],
   "start_url": ".",

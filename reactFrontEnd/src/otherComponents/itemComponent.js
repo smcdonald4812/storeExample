@@ -16,7 +16,12 @@ class itemComponent extends React.Component {
     }
 
     itemList() {
-        return this.state.items;
+        let list = [];
+        return (
+            JSON.stringify(itemService.readItems().then((response) => {
+                return response.json();
+            }))
+        );
     }
 }
 

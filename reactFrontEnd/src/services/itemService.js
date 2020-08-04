@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const ITEM_REST_API_GET_URL = 'http://localhost:8080/storeexmple/mongo/readItem';
-const ITEMS_REST_API_GET_URL = 'http://localhost:8080/storeexmple/mongo/readItems';
+const ITEMS_REST_API_GET_URL = 'http://localhost:9082/mongo';
 const ITEM_REST_API_PUT_URL = 'http://localhost:8080/storeexmple/mongo/updateItem';
 const ITEM_REST_API_POST_URL = 'http://localhost:8080/storeexmple/mongo/createItem';
 const ITEM_REST_API_DELETE_URL = 'http://localhost:8080/storeexmple/mongo/deleteItem';
