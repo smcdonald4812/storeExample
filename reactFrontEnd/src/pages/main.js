@@ -1,12 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
-import NavBar from './navbar.js'
-import Home from './home.js';
-import News from './news.js';
-import Account from './account.js';
-import Cart from './cart.js';
-import Item from './item.js';
+import NavBar from './navbar.js';
 
 class Main extends React.Component {
     render() {
@@ -20,18 +14,7 @@ class Main extends React.Component {
                         crossOrigin="anonymous"
                         />
                 </header>
-                
-                <BrowserRouter>
-                    <NavBar/>
-                    <Switch>
-                        <Route path="/" exact component={Home}/>
-                        <Route path="/home" component={Home}/>
-                        <Route path="/news" component={News} />
-                        <Route path="/account" component={Account} />
-                        <Route path="/cart" component={Cart} /> 
-                        <Route path="/item" component={Item} />
-                    </Switch> 
-                </BrowserRouter>
+                <NavBar/>
             </div>
         );
     }

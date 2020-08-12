@@ -1,22 +1,26 @@
 import axios from 'axios'
 
-const USER_REST_API_GET_URL = 'http://localhost:8080/storeexmple/h2/readUser';
-const USERS_REST_API_PUT_URL = 'http://localhost:8080/storeexmple/h2/updateUser';
-const USERS_REST_API_POST_URL = 'http://localhost:8080/storeexmple/h2/createUser';
-const USERS_REST_API_DELETE_URL = 'http://localhost:8080/storeexmple/h2/deleteUser';
+const USER_REST_API_GET_URL = 'http://localhost:8080/storeexmple/user';
+const USERS_REST_API_PUT_URL = 'http://localhost:8080/storeexmple/user/update';
+const USERS_REST_API_POST_URL = 'http://localhost:8080/storeexmple/user/create';
+const USERS_REST_API_DELETE_URL = 'http://localhost:8080/storeexmple/user/delete';
 
 class userService {
-    readUser(){
-        return axios.get(USER_REST_API_GET_URL);
+    get(username, pass){
+        let s = USER_REST_API_GET_URL+'/'+username+'/'+pass;
+        return axios.get(s);
     }
-    updateUser() {
-        return axios.put(USERS_REST_API_PUT_URL);
+    put(u) {
+        let user = JSON.stringify(u);
+        return axios.put(USERS_REST_API_PUT_URL, user, {headers:{'content-type':'application/json'}});
     }
-    createUser() {
-        return axios.post(USERS_REST_API_POST_URL);
+    post(u) {
+        let user = JSON.stringify(u);
+        return axios.post(USERS_REST_API_POST_URL, user, {headers:{'content-type':'application/json'}});
     }
-    deleteUser() {
-        return axios.delete(USERS_REST_API_DELETE_URL);
+    delete(id) {
+        let s  = USERS_REST_API_DELETE_URL+'/'+id;
+        return axios.delete(s);
     }
 }
 
