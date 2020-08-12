@@ -1,0 +1,70 @@
+{
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "icons": [
+    {
+      "src": "imgs/balloons.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/cellphone.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/chocolate.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/eyeLiner.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/laptop.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/lipstick.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/plates.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/ram.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/shoes.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/someBook.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/spoons.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "imgs/tshirt.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
