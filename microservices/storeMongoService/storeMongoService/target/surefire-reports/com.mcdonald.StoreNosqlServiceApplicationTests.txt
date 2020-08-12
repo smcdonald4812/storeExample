@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.mcdonald.StoreNosqlServiceApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 17.186 s <<< FAILURE! - in com.mcdonald.StoreNosqlServiceApplicationTests
+contextLoads  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
+Caused by: org.springframework.dao.DuplicateKeyException: E11000 duplicate key error collection: test.item index: _id_ dup key: { _id: 0 }; nested exception is com.mongodb.MongoWriteException: E11000 duplicate key error collection: test.item index: _id_ dup key: { _id: 0 }
+Caused by: com.mongodb.MongoWriteException: E11000 duplicate key error collection: test.item index: _id_ dup key: { _id: 0 }
+

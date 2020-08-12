@@ -1,0 +1,37 @@
+{"properties": [
+  {
+    "name": "info.description",
+    "type": "java.lang.String",
+    "description": "A description for 'info.description'"
+  },
+  {
+    "name": "eureka.healthcheck.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.healthcheck.enabled'"
+  },
+  {
+    "name": "info.name",
+    "type": "java.lang.String",
+    "description": "A description for 'info.name'"
+  },
+  {
+    "name": "eureka.register-with-eureka",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.register-with-eureka'"
+  },
+  {
+    "name": "eureka.fetch-registry",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.fetch-registry'"
+  },
+  {
+    "name": "eureka.healthcheck.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.healthcheck.enabled'"
+  },
+  {
+    "name": "eureka.healthcheck.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.healthcheck.enabled'"
+  }
+]}
