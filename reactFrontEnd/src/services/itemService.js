@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const ITEM_REST_API_GET_URL = 'http://localhost:8080/storeexmple/mongo/readId';
-const ITEM_REST_API_GETSEARCH_URL = 'http://localhost:8080/storeexmple/mongo/readTitle';
-const ITEM_REST_API_GETTYPE_URL = 'http://localhost:8080/storeexmple/mongo/readType';
-const ITEMS_REST_API_GETALL_URL = 'http://localhost:9082/mongo/';
-const ITEM_REST_API_PUT_URL = 'http://localhost:8080/storeexmple/mongo/update';
-const ITEM_REST_API_POST_URL = 'http://localhost:8080/storeexmple/mongo/create';
-const ITEM_REST_API_DELETE_URL = 'http://localhost:8080/storeexmple/mongo/delete';
+const ITEM_REST_API_GET_URL = 'http://localhost:8080/storeexample/mongo/readId';
+const ITEM_REST_API_GETSEARCH_URL = 'http://localhost:8080/storeexample/mongo/readTitle';
+const ITEM_REST_API_GETTYPE_URL = 'http://localhost:8080/storeexample/mongo/readType';
+const ITEMS_REST_API_GETALL_URL = 'http://localhost:9082/storeexample/mongo/';
+const ITEM_REST_API_PUT_URL = 'http://localhost:8080/storeexample/mongo/update';
+const ITEM_REST_API_POST_URL = 'http://localhost:8080/storeexample/mongo/create';
+const ITEM_REST_API_DELETE_URL = 'http://localhost:8080/storeexample/mongo/delete';
 
 class ItemService {
     get(id) {

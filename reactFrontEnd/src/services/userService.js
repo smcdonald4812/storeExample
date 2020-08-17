@@ -1,9 +1,8 @@
 import axios from 'axios'
 
-const USER_REST_API_GET_URL = 'http://localhost:8080/storeexmple/user';
-const USERS_REST_API_PUT_URL = 'http://localhost:8080/storeexmple/user/update';
-const USERS_REST_API_POST_URL = 'http://localhost:8080/storeexmple/user/create';
-const USERS_REST_API_DELETE_URL = 'http://localhost:8080/storeexmple/user/delete';
+const USER_REST_API_GET_URL = 'http://localhost:8080/storeexample/user';
+const USERS_REST_API_PUT_URL = 'http://localhost:8080/storeexample/user/update';
+const USERS_REST_API_POST_URL = 'http://localhost:8080/storeexample/user/create';
 
 class userService {
     get(username, pass){
@@ -17,10 +16,6 @@ class userService {
     post(u) {
         let user = JSON.stringify(u);
         return axios.post(USERS_REST_API_POST_URL, user, {headers:{'content-type':'application/json'}});
-    }
-    delete(id) {
-        let s  = USERS_REST_API_DELETE_URL+'/'+id;
-        return axios.delete(s);
     }
 }
 
