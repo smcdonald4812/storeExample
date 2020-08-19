@@ -1,0 +1,39 @@
+spring: 
+  application: 
+    name: store-react-service 
+  cloud:
+    gateway:
+      routes:
+      - id: user
+        uri: http://localhost:9081
+        predicates:
+        - Path=/storeexample/user/**
+      - id: account
+        uri: http://localhost:9081
+        predicates:
+        - Path=/storeexample/account/**
+      - id: accounttransaciton
+        uri: http://localhost:9081
+        predicates:
+        - Path=storeexample/accounttransaction/**
+      - id: itemtransaction
+        uri: http://localhost:9081
+        predicates:
+        - Path=/storeexample/itemtransaction/**
+      - id: membershiptiers
+        uri: http://localhost:9081
+        predicates:
+        - Path=/storeexample/mambershiptiers/**
+      - id: cart
+        uri: http://localhost:9082
+        predicates:
+        - Path=/storeexample/cart/**
+      - id: item
+        uri: http://localhost:9082
+        predicates:
+        - Path=/storeexample/mongo/**
+server: 
+  port: 8080
+info:
+  description: Gateway for bookstore microservices
+  name: Store Gateway
