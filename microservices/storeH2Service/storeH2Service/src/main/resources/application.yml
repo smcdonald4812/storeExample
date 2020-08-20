@@ -1,6 +1,6 @@
 spring: 
   application: 
-    name: store-react-service 
+    name: store-H2-SQL-service 
 server: 
   port: 9081
 info:
