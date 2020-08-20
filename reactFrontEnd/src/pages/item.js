@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, Button} from 'react-bootstrap';
 import Cart from './cart.js';
 import CartService from '../services/cartService.js';
-import Login from './login.js';
+import NavBar from './navbar.js';
 
 class Item extends React.Component {
     constructor(props) {
@@ -54,7 +54,7 @@ class Item extends React.Component {
         } else if(this.state.loggedIn===false) {
             return(
                 <div>
-                    <Login cart={this.state.cart} item={this.state.item}/>
+                    <NavBar cart={this.state.cart} item={this.state.item} page={NavBar.verifyUser()}/>
                 </div>
             );
         } else {

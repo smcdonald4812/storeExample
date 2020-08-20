@@ -1,12 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap';
+import {Navbar, Nav, Form, FormControl, Button, Container, Row, Col} from 'react-bootstrap';
 import Home from './home.js';
 import News from './news.js';
 import Account from './account.js';
 import Cart from './cart.js';
 import ItemService from '../services/itemService.js';
-import Login from './login.js';
+import UserService from '../services/userService.js';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -18,10 +18,21 @@ class NavBar extends React.Component {
             isCart:false,
             isItem:false,
             login:false,
+            flag:false,
+            signUp:false,
             search:'',
             user:[],
             cart:[],
-            items:[]
+            items:[],
+            firstname:'',
+            lastname:'',
+            username:'',
+            password:'',
+            country:'',
+            mobile:'',
+            pass2:'',
+            pass:'',
+            uName:''
         }
         this.home = this.home.bind(this);
         this.account = this.account.bind(this);
@@ -30,6 +41,11 @@ class NavBar extends React.Component {
         this.search = this.search.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.login = this.login.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmitSignUp = this.handleSubmitSignUp.bind(this);
+        this.goTo = this.goTo.bind(this);
+        this.signUp = this.signUp.bind(this);
+        this.verifyUser = this.verifyUser.bind(this);
     }
     handleChange(event) {
         const value = event.target.value;
@@ -125,13 +141,39 @@ class NavBar extends React.Component {
         }
         event.stopPropigation();
     }
-    render() {
-        if(this.props.justLogged!==undefined) {
-            this.setState({
-                user:this.props.user,
-                cart:this.props.cart
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log(this.state.uName+" "+this.state.pass);
+        if(this.state.uName!=='' & this.state.pass!=='') {
+            UserService.get(this.state.uName, this.state.pass).then((response) => {
+                this.setState({ user: response.data});
             });
+            if(this.state.user.username===undefined) {
+                alert('User name or password is invalid');
+            } else {
+                this.home();
+            }
         }
+        event.stopPropagation();
+    }
+    handleSubmitSignUp(event) {
+        event.preventDefault();
+        if(this.state.password===this.state.pass2) {
+            let user = {'firstname':this.state.firstname, 'lastname':this.state.lastname,'username':this.state.username,'password':this.state.password,'country':this.state.country, 'mobile':this.state.mobile};
+            UserService.create(user);
+            this.home();
+        } else {
+            alert('Password does not match');
+        }
+        event.stopPropagation();
+    }
+    goTo() {
+        this.setState({signUp:false});
+    }
+    signUp() {
+        this.setState({signUp:true});
+    }
+    render() {
         let page;
                 if(this.state.isHome===true) {
                     page = <Home user={this.state.user} cart={this.state.cart}/>;
@@ -144,7 +186,7 @@ class NavBar extends React.Component {
                 } else if(this.state.isSearch===true) {
                     page = <Home user={this.state.user} cart={this.state.cart} items={this.state.items}/>;
                 } else if(this.state.login===true) {
-                    page = <Login user={this.state.user} cart={this.state.cart}/>;
+                    page = this.verifyUser();
                 }
         return  ( <div>
             <Navbar fixed="top" bg="dark" expand="lg">
@@ -168,6 +210,109 @@ class NavBar extends React.Component {
             </div>
         );
     }
+    verifyUser() {
+            if(this.state.signUp===true) {
+                return (
+                    <div className="App">
+                        <header className="App-header">
+                                <link
+                                rel="stylesheet"
+                                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+                                integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+                                crossOrigin="anonymous"
+                                />
+                        </header>
+                        <Container style={{marginTop:"25px", marginBottom:"25px"}}>
+                            <Row>
+                                <Col className="rounded" style={{backgroundColor:"#007bff"}} md={{ span: 6, offset: 3 }}>
+                                    <form className="mr-auto" style={{marginTop:"10px"}} onSubmit={this.handleSubmitSignUp}>
+                                        <img className="img" src="./balloons.png" alt="store logo"/>
+                                        <h3 className="mr-auto text-center text-light">Sign Up</h3>
+    
+                                        <div className="form-group">
+                                            <label className="text-light">First name</label>
+                                            <input type="text" name="firstname" className="form-control" value={this.state.firstname} required placeholder="First name" onChange={this.handleChange}/>
+                                        </div>
+    
+                                        <div className="form-group">
+                                            <label className="text-light">Last name</label>
+                                            <input type="text" name="lastname" className="form-control" value={this.state.lastname} required placeholder="Last name" onChange={this.handleChange}/>
+                                        </div>
+    
+                                        <div className="form-group">
+                                            <label className="text-light">Phone Number</label>
+                                            <input type="tel" name="mobile" className="form-control" value={this.state.mobile} required placeholder="mobile" onChange={this.handleChange}/>
+                                        </div>
+    
+                                        <div className="form-group">
+                                            <label className="text-light">Country</label>
+                                            <input type="text" name="country" className="form-control" value={this.state.country} required placeholder="country" onChange={this.handleChange}/>
+                                        </div>
+    
+                                        <div className="form-group">
+                                            <label className="text-light">User name</label>
+                                            <input type="text" name="username" className="form-control" value={this.state.username} required min="7" placeholder="username" onChange={this.handleChange}/>
+                                        </div>
+    
+                                        <div className="form-group">
+                                            <label className="text-light">Password</label>
+                                            <input type="password" name="password" className="form-control" value={this.state.password} required placeholder="Enter password" pattern='^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$' onChange={this.handleChange}/>
+                                        </div>
+    
+                                        <div className="form-group">
+                                            <label className="text-light">Verify Password</label>
+                                            <input type="password" name="pass2" className="form-control" value={this.state.pass2} required placeholder="Verify password" onChange={this.handleChange}/>
+                                        </div>
+    
+                                        <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                                        <Button className="btn btn-primary btn-block" style={{marginBottom:"10px"}} onClick={this.goTo}>Already registered?</Button>
+                                    </form>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </div>
+                );   
+            } else if(this.state.flag===true) {
+                this.home();
+            } else {
+                return (
+                    <div className="App">
+                        <header className="App-header">
+                                <link
+                                rel="stylesheet"
+                                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+                                integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+                                crossOrigin="anonymous"
+                                />
+                        </header>
+                    <div>
+                    <Container style={{marginTop:"75px"}}>
+                    <Row>
+                        <Col className="rounded" style={{backgroundColor:"#007bff"}} md={{ span: 6, offset: 3 }}>
+                            <form className="mr-auto" style={{marginTop:"10px"}} onSubmit={this.handleSubmit}>
+                                <img className="img" src="./balloons.png" alt="store logo"/>
+                                <h3 className="mr-auto text-center text-light">Sign In</h3>
+    
+                                <div className="form-group">
+                                    <label className="text-light">User name</label>
+                                    <input type="text" className="form-control" name="uName" value={this.state.uName} placeholder="Enter username" onChange={this.handleChange}/>
+                                </div>
+    
+                                <div className="form-group">
+                                    <label className="text-light">Password</label>
+                                    <input type="password" id="pass" className="form-control" name="pass" value={this.state.pass} placeholder="Enter password" onChange={this.handleChange}/>
+                                </div>
+    
+                                <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                                <Button className="btn btn-primary btn-block" style={{marginBottom:"10px"}} onClick={this.signUp}>SignUp</Button>
+                            </form>
+                        </Col>
+                    </Row>
+                    </Container>
+                    </div>
+                    </div>
+            );
+        }
+    }
 }
-
 export default NavBar;
