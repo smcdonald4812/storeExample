@@ -1,6 +1,6 @@
 spring: 
   application: 
-    name: store-react-service 
+    name: store-MongoDB-NoSQL-service 
 server: 
   port: 9082
 info:
